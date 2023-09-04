@@ -1,29 +1,32 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist/",
-    // Не позволяет использовать переменные без явного указания типа
-    "noImplicitAny": true,
-    //Указываем модульную систему. Различные способы модульной сборки
-    "module": "ESNext",
-    //Указываем версию ECMAScript, в которую код будет компилироваться
-    //Нужно для поддержки большинства браузеров
-    "target": "es5",
-    //Для обработки конструкций как в React
-    "jsx": "react",
-    //Позволяет обрабатывать компилятору не только ts файлы, но и js
-    "allowJs": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
-  },
-
-  /* webpack.config.ts при импорте все равно использует
-   common.js (require("filename"))
-    Поэтому указываем опции компиляции как CommonJS
-  */
-  "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
+        "outDir": "./dist/",
+        // Не позволяет использовать переменные без явного указания типа
+        "noImplicitAny": true,
+        // Указываем модульную систему. Различные способы модульной сборки
+        "module": "ESNext",
+        // Указываем версию ECMAScript, в которую код будет компилироваться
+        // Нужно для поддержки большинства браузеров
+        "target": "es5",
+        //Для обработки конструкций как в React
+        "jsx": "react",
+        // Позволяет обрабатывать компилятору не только ts файлы, но и js
+        "allowJs": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        // Для абсолютного импорта
+        "baseUrl": "."
+    },
+
+    /* 
+       webpack.config.ts при импорте все равно использует
+       common.js (require("filename"))
+       Поэтому указываем опции компиляции как CommonJS
+    */
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
     }
-  }
 }
