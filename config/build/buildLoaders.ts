@@ -37,7 +37,12 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
             exclude: /node_modules/,
         }
 
-    const loadersArray = [tsLoader, scssLoader]
+    const fontLoader = {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+    }
+
+    const loadersArray = [tsLoader, scssLoader, fontLoader]
 
     return loadersArray
 }

@@ -8,5 +8,6 @@ export const buildDevSever = (
         port: options.port,
         //Автоматически открывает в бразуере приложение
         open: true,
+        historyApiFallback: true,
     }
 }
