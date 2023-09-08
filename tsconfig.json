@@ -19,6 +19,9 @@
         "allowSyntheticDefaultImports": true,
         // Для абсолютного импорта
         "baseUrl": ".",
+        "paths": {
+            "*": ["./src/*"]
+        },
         "forceConsistentCasingInFileNames": true
     },
 

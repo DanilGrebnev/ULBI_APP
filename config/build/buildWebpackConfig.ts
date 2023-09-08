@@ -32,7 +32,7 @@ export const buildWebpackConfig = (
         //Сервер для разработки
         devServer: isDev ? buildDevSever(options) : undefined,
 
-        resolve: buildResolvers(),
+        resolve: buildResolvers(options),
         //Для отслеживания ошибок
         devtool: isDev ? 'inline-source-map' : undefined,
     }

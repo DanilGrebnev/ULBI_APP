@@ -1,10 +1,5 @@
 import { useCallback, useContext } from 'react'
-import {
-    Theme,
-    ThemeContext,
-    LOCAL_STORAGE_THEME_KEY,
-    ThemeContextProps,
-} from './ThemeContext'
+import { Theme, ThemeContext, LOCAL_STORAGE_THEME_KEY } from './ThemeContext'
 
 interface UseThemeResult {
     theme: Theme | undefined
@@ -15,9 +10,9 @@ export const useTheme = (): UseThemeResult => {
     const { setTheme, theme } = useContext(ThemeContext)
 
     const toggleTheme = useCallback(() => {
-        const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK
-
         if (!setTheme) return
+
+        const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK
 
         setTheme(newTheme)
 
