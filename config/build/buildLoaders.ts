@@ -3,7 +3,20 @@ import webpack from 'webpack'
 import { BuildOptions } from './types/config'
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
-    // Лоадер для работы с scss
+    const fileLoader = {
+        test: /\.(png|jpe?g|gif|woff|woff2|eot|ttf|otf)$/i,
+        use: [
+            {
+                loader: 'file-loader',
+            },
+        ],
+    }
+
+    const svgLoader = {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+    }
+
     const scssLoader = {
         test: /\.s[ac]ss$/i,
         use: [
@@ -25,24 +38,22 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         ],
     }
 
-    // Если не используем тайпскрипт - нужен babel-loader
-    const tsLoader =
-        // Лоадеры отвечают за обработку файлов, которые
-        // выходят за рамки js: .png, svg, ts, scss, css и т.д.
-        {
-            // По регулярке происходит поиск файлов, которые
-            // будет обрабтывать лоадер из поля use
-            test: /\.tsx?$/,
-            use: 'ts-loader',
-            exclude: /node_modules/,
-        }
-
-    const fontLoader = {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
+    const babelLoader = {
+        test: /\.(js|jsx|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env'],
+            },
+        },
     }
 
-    const loadersArray = [tsLoader, scssLoader, fontLoader]
+    const tsLoader = {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+    }
 
-    return loadersArray
+    return [babelLoader, tsLoader, scssLoader, svgLoader, fileLoader]
 }

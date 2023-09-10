@@ -9,6 +9,12 @@ button,
 textarea,
 select {
     margin: 0;
-
     font: inherit;
+}
+
+button,
+select,
+input[type='button'],
+a {
+    cursor: pointer;
 }

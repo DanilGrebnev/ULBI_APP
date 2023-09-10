@@ -10,7 +10,9 @@ export default (...args: ClassNamesProps[]): string => {
             if (typeof classNameObject === 'object') {
                 Object.entries(classNameObject).forEach(
                     ([className, isTrue]) => {
-                        if (isTrue) classNames.push(className.trim())
+                        if (isTrue) {
+                            classNames.push(className.trim())
+                        }
                     }
                 )
             }

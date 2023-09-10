@@ -6,8 +6,8 @@ export const buildDevSever = (
 ): DevServerConfiguration => {
     return {
         port: options.port,
-        //Автоматически открывает в бразуере приложение
         open: true,
         historyApiFallback: true,
+        hot: true,
     }
 }
