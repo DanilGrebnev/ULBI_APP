@@ -1,4 +1,4 @@
-import React, { type FC, useState } from 'react'
+import { type FC, useState } from 'react'
 import s from './SideBar.module.scss'
 import cn from 'shared/lib/classnames'
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher'

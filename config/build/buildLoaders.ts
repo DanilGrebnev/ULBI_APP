@@ -1,5 +1,6 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import type webpack from 'webpack'
+
 import { type BuildOptions } from './types/config'
 
 // eslint-disable-next-line @typescript-eslint/space-before-function-paren

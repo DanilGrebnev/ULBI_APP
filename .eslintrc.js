@@ -3,17 +3,21 @@ module.exports = {
         browser: true,
         es2021: true,
     },
-    extends: ['plugin:react/recommended', 'standard-with-typescript'],
+    extends: ['plugin:react/recommended', 'standard-with-typescript', 'eslint:recommended'],
     overrides: [],
     parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['react'],
+    
+    plugins: ['react', 'simple-import-sort'],
     ignorePatterns: ['.eslintrc.js'],
     rules: {
         /** Отключает ошибки отсутпов */
         '@typescript-eslint/indent': 'off',
+        '@typescript-eslint/no-floating-promises':'off',
+        "simple-import-sort/exports": "error",
+        "simple-import-sort/imports": "error",
 
         /** Предупреждение о неиспользуемых переменных */
         '@typescript-eslint/no-unused-vars': 'warn',

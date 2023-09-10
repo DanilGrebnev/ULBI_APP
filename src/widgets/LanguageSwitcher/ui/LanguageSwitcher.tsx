@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { type FC } from 'react'
 import s from './LanguageSwitcher.module.scss'
 import cn from 'shared/lib/classnames'
 import { useTranslation } from 'react-i18next'
@@ -14,7 +14,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = (props) => {
 
     const { t, i18n } = useTranslation()
 
-    const toggleLanguage = () => {
+    const toggleLanguage = (): void => {
         i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru')
     }
 

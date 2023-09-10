@@ -1,6 +1,7 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import webpack from 'webpack'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import webpack from 'webpack'
+
 // import ReactRefreshWebpackPlugin from 'react-refresh-webpack-plugin'
 import { type BuildOptions } from './types/config'
 

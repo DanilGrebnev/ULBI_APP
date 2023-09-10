@@ -1,5 +1,6 @@
 import { type ButtonHTMLAttributes, type FC } from 'react'
 import cn from 'shared/lib/classnames'
+
 import s from './Button.module.scss'
 
 export enum ThemeButton {
