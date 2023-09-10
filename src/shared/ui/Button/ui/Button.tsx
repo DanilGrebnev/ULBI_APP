@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC } from 'react'
+import { type ButtonHTMLAttributes, type FC } from 'react'
 import cn from 'shared/lib/classnames'
 import s from './Button.module.scss'
 
@@ -21,8 +21,8 @@ export const Button: FC<ButtonProps> = (props) => {
 
     return (
         <button
-            type='button'
-            title='button'
+            type="button"
+            title="button"
             className={cn(s.button, s[theme], className)}
             {...otherProps}
         >

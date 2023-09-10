@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { type FC, useState } from 'react'
 import s from './SideBar.module.scss'
 import cn from 'shared/lib/classnames'
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher'
@@ -9,11 +9,11 @@ interface SideBarProps {
 }
 
 export const SideBar: FC<SideBarProps> = (props) => {
-    const { className, children } = props
+    const { className } = props
 
     const [collapsed, setCollapsed] = useState(false)
 
-    const toggleCollapsed = () => {
+    const toggleCollapsed = (): void => {
         setCollapsed((pre) => !pre)
     }
 
@@ -21,7 +21,7 @@ export const SideBar: FC<SideBarProps> = (props) => {
         <div className={cn(s.SideBar, className, { [s.collapsed]: collapsed })}>
             <button
                 onClick={toggleCollapsed}
-                type='button'
+                type="button"
             >
                 Toggle
             </button>

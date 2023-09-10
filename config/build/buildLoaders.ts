@@ -1,7 +1,8 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import webpack from 'webpack'
-import { BuildOptions } from './types/config'
+import type webpack from 'webpack'
+import { type BuildOptions } from './types/config'
 
+// eslint-disable-next-line @typescript-eslint/space-before-function-paren
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff|woff2|eot|ttf|otf)$/i,
@@ -26,7 +27,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
                 options: {
                     modules: {
                         auto: (resPath: string) =>
-                            !!resPath.includes('.module.'),
+                            Boolean(resPath.includes('.module.')),
 
                         localIdentName: options.isDev
                             ? '[path][name]__[local]--[hash:base64:5]'

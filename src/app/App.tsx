@@ -7,14 +7,14 @@ import cn from 'shared/lib/classnames'
 import './styles/index.scss'
 import { SideBar } from 'widgets/SideBar'
 
-export const App = () => {
+export const App = (): JSX.Element => {
     const { theme } = useTheme()
 
     return (
-        <Suspense fallback='loading'>
+        <Suspense fallback="loading">
             <div className={cn('app', theme)}>
                 <NavBar />
-                <div className='content-page'>
+                <div className="content-page">
                     <SideBar />
                     <AppRouter />
                 </div>

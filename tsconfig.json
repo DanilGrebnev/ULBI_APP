@@ -9,8 +9,7 @@
         // Указываем версию ECMAScript, в которую код будет компилироваться
         // Нужно для поддержки большинства браузеров
         "target": "es5",
-        //!
-        "lib": ["dom", "dom.iterable", "esnext"],
+        // "lib": ["dom", "dom.iterable", "esnext"],
         //Для обработки конструкций как в React
         // react-jsx - чтобы не нужно было импортировать React в каждом файле
         "jsx": "react-jsx",
@@ -26,7 +25,6 @@
         },
         "forceConsistentCasingInFileNames": true
     },
-
     /* 
        webpack.config.ts при импорте все равно использует
        common.js (require("filename"))

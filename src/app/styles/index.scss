@@ -1,15 +1,13 @@
-@import 'reset';
-@import 'variables/global';
-@import 'theme/dark';
-@import 'theme/normal';
+@import url('reset.scss');
+@import url('variables/global.scss');
+@import url('theme/dark.scss');
+@import url('theme/normal.scss');
 
 .app {
-    font: var(--font-m);
-
-    background: var(--bg-color);
-    color: var(--primary-color);
-
     min-height: 100vh;
+    color: var(--primary-color);
+    font: var(--font-m);
+    background: var(--bg-color);
 }
 
 .content-page {
@@ -19,4 +17,10 @@
 .page-wrapper {
     flex-grow: 1;
     padding: 20px;
+}
+
+.appps {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
 }

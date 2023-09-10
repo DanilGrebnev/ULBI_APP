@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 import s from './ThemeSwitcher.module.scss'
 import { Button } from 'shared/ui/Button'
 import LightIcon from 'shared/assets/icons/theme-light.svg'
@@ -15,12 +15,12 @@ interface ThemeSwitcherProps {
 export const ThemeSwitcher: FC<ThemeSwitcherProps> = (props) => {
     const { theme, toggleTheme } = useTheme()
 
-    const { children = 'switch theme', className } = props
+    const { className, children } = props
 
     return (
         <Button
             theme={ThemeButton.CLEAR}
-            type='button'
+            type="button"
             onClick={toggleTheme}
             className={cn(s.themeSwitcher, className)}
         >
