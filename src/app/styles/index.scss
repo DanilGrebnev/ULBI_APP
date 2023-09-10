@@ -1,13 +1,13 @@
-@import url('reset.scss');
-@import url('variables/global.scss');
-@import url('theme/dark.scss');
-@import url('theme/normal.scss');
+@import 'reset';
+@import 'variables/global';
+@import 'theme/dark';
+@import 'theme/normal';
 
 .app {
     min-height: 100vh;
+    background: var(--bg-color);
     color: var(--primary-color);
     font: var(--font-m);
-    background: var(--bg-color);
 }
 
 .content-page {
