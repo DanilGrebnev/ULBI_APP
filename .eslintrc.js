@@ -18,7 +18,7 @@ module.exports = {
         '@typescript-eslint/no-floating-promises':'off',
         "simple-import-sort/exports": "error",
         "simple-import-sort/imports": "error",
-
+        "@typescript-eslint/promise-function-async":'off',
         /** Предупреждение о неиспользуемых переменных */
         '@typescript-eslint/no-unused-vars': 'warn',
         /**Отключает обязателную проверку на null */

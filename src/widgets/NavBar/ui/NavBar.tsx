@@ -1,7 +1,8 @@
 import { type FC } from 'react'
-import s from './Navbar.module.scss'
 import cn from 'shared/lib/classnames'
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink'
+
+import s from './Navbar.module.scss'
 
 interface NavBarProps {
     className?: string
