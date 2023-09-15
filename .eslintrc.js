@@ -2,23 +2,28 @@ module.exports = {
     env: {
         browser: true,
         es2021: true,
+        jest: true,
     },
-    extends: ['plugin:react/recommended', 'standard-with-typescript', 'eslint:recommended'],
+    extends: [
+        'plugin:react/recommended',
+        'standard-with-typescript',
+        'eslint:recommended',
+    ],
     overrides: [],
     parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    
+
     plugins: ['react', 'simple-import-sort'],
     ignorePatterns: ['.eslintrc.js'],
     rules: {
         /** Отключает ошибки отсутпов */
         '@typescript-eslint/indent': 'off',
-        '@typescript-eslint/no-floating-promises':'off',
-        "simple-import-sort/exports": "error",
-        "simple-import-sort/imports": "error",
-        "@typescript-eslint/promise-function-async":'off',
+        '@typescript-eslint/no-floating-promises': 'off',
+        'simple-import-sort/exports': 'error',
+        'simple-import-sort/imports': 'error',
+        '@typescript-eslint/promise-function-async': 'off',
         /** Предупреждение о неиспользуемых переменных */
         '@typescript-eslint/no-unused-vars': 'warn',
         /**Отключает обязателную проверку на null */
