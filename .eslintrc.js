@@ -24,18 +24,27 @@ module.exports = {
         'simple-import-sort/exports': 'error',
         'simple-import-sort/imports': 'error',
         '@typescript-eslint/promise-function-async': 'off',
+        'no-inline-styles': 'off',
+
         /** Предупреждение о неиспользуемых переменных */
+        'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': 'warn',
+
         /**Отключает обязателную проверку на null */
         '@typescript-eslint/strict-boolean-expressions': 'off',
         '@typescript-eslint/comma-dangle': 'off',
 
+        //Отключает проверку пробела перед скобками при объявлении функции
+        '@typescript-eslint/space-before-function-paren': 'off',
+
         /*----React----**/
         'react/jsx-props-no-spreading': 'warn',
-        /** Отклчает импорт React from 'react' в каждый файл */
+
+        /** Отклчает [import React from 'react'] в каждый файл */
         'react/react-in-jsx-scope': 'off',
         'react/jsx-uses-react': 'off',
         'react/jsx-ident': 'off',
+
         /** метод render устарел, используйте createRoot из react 18 */
         'react/no-deprecated': 'off',
     },
