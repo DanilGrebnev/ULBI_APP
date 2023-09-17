@@ -4,7 +4,7 @@
  */
 
 /** @type {import('jest').Config} */
-const config = {
+module.exports = {
     // All imported modules in your tests should be mocked automatically
     // automock: false,
 
@@ -28,6 +28,7 @@ const config = {
         'node',
     ],
     moduleDirectories: ['node_modules'],
+    modulePaths: ['<rootDir>/src'],
     rootDir: '../../',
     coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
     testMatch: ['<rootDir>src/**/*(*)@(spec|test).[tj]s?(x)'],
@@ -179,5 +180,3 @@ const config = {
     // Whether to use watchman for file crawling
     // watchman: true,
 }
-
-module.exports = config

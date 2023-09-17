@@ -1,4 +1,4 @@
-import classNames from './index'
+import classNames from 'shared/lib/classnames'
 
 describe('classNames', () => {
     test('Concat classes', () => {

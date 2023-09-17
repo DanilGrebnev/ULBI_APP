@@ -1,6 +1,6 @@
 import { type FC } from 'react'
-import { Link, type LinkProps } from 'react-router-dom'
-import cl from 'shared/lib/classnames'
+import { type LinkProps, NavLink } from 'react-router-dom'
+import cn from 'shared/lib/classnames'
 
 import s from './AppLink.module.scss'
 
@@ -23,13 +23,17 @@ export const AppLink: FC<AppLinkProps> = (props) => {
         ...otherProps
     } = props
 
+    const classNames = [s.AppLink, s[theme], className]
+
     return (
-        <Link
+        <NavLink
             to={to}
-            className={cl(s.AppLink, className, s[theme])}
+            className={({ isActive }) =>
+                cn(...classNames, { [s.active]: isActive })
+            }
             {...otherProps}
         >
             {children}
-        </Link>
+        </NavLink>
     )
 }
