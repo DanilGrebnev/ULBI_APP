@@ -1,21 +1,22 @@
 import 'shared/config/i18n/i18n'
 
 import { ErrorBoundary } from 'app/providers/ErrorBoundary'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 
 import { App } from './app/App'
 import { ThemeProvider } from './app/providers/ThemeProvider'
 
-const root = document.getElementById('root')
+const container = document.getElementById('root') as HTMLElement
 
-render(
+const Application = (
     <BrowserRouter>
         <ErrorBoundary>
             <ThemeProvider>
                 <App />
             </ThemeProvider>
         </ErrorBoundary>
-    </BrowserRouter>,
-    root
+    </BrowserRouter>
 )
+
+createRoot(container).render(Application)
