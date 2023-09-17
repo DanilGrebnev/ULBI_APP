@@ -1,7 +1,4 @@
-/**
- * For a detailed explanation regarding each configuration property, visit:
- * https://jestjs.io/docs/configuration
- */
+const path = require('path');
 
 /** @type {import('jest').Config} */
 module.exports = {
@@ -32,6 +29,12 @@ module.exports = {
     rootDir: '../../',
     coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
     testMatch: ['<rootDir>src/**/*(*)@(spec|test).[tj]s?(x)'],
+    setupFilesAfterEnv: ['<rootDir>config/jest/jest-setup.ts'],
+    testEnvironment: 'jsdom',
+    moduleNameMapper: {
+        '\\.s?css$': 'identity-obj-proxy',
+        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+    },
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 
@@ -137,7 +140,6 @@ module.exports = {
     // snapshotSerializers: [],
 
     // The test environment that will be used for testing
-    testEnvironment: 'jsdom',
 
     // Options that will be passed to the testEnvironment
     // testEnvironmentOptions: {},

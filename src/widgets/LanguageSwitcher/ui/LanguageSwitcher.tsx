@@ -1,9 +1,9 @@
 import { type FC } from 'react'
-import s from './LanguageSwitcher.module.scss'
-import cn from 'shared/lib/classnames'
 import { useTranslation } from 'react-i18next'
-import { Button } from 'shared/ui/Button'
-import { ThemeButton } from 'shared/ui/Button/ui/Button'
+import cn from 'shared/lib/classnames'
+import { Button, ThemeButton } from 'shared/ui/Button'
+
+import s from './LanguageSwitcher.module.scss'
 
 interface LanguageSwitcherProps {
     className?: string

@@ -16,7 +16,7 @@ module.exports = {
     },
 
     plugins: ['react', 'simple-import-sort'],
-    ignorePatterns: ['.eslintrc.js'],
+    ignorePatterns: ['.eslintrc.js', 'jest.config.js'],
     rules: {
         /** Отключает ошибки отсутпов */
         '@typescript-eslint/indent': 'off',

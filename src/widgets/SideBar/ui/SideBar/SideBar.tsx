@@ -15,12 +15,16 @@ export const SideBar: FC<SideBarProps> = (props) => {
     const [collapsed, setCollapsed] = useState(false)
 
     const toggleCollapsed = (): void => {
-        setCollapsed((pre) => !pre)
+        setCollapsed((prev) => !prev)
     }
 
     return (
-        <div className={cn(s.SideBar, className, { [s.collapsed]: collapsed })}>
+        <div
+            data-testid="sidebar"
+            className={cn(s.SideBar, className, { [s.collapsed]: collapsed })}
+        >
             <button
+                data-testid="sidebar-toggle"
                 onClick={toggleCollapsed}
                 type="button"
             >

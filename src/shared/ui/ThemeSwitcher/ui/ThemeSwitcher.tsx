@@ -3,8 +3,7 @@ import { type FC } from 'react'
 import DarkIcon from 'shared/assets/icons/theme-dark.svg'
 import LightIcon from 'shared/assets/icons/theme-light.svg'
 import cn from 'shared/lib/classnames'
-import { Button } from 'shared/ui/Button'
-import { ThemeButton } from 'shared/ui/Button/ui/Button'
+import { Button, ThemeButton } from 'shared/ui/Button'
 
 import s from './ThemeSwitcher.module.scss'
 
