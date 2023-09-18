@@ -18,10 +18,11 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = (props) => {
 
     return (
         <Button
+            data-testid="toggle-theme"
             theme={ThemeButton.CLEAR}
             type="button"
             onClick={toggleTheme}
-            className={cn(s.themeSwitcher, className)}
+            className={cn(s.themeSwitcher, className, 'theme-switcher')}
         >
             {theme === Theme.DARK ? <DarkIcon /> : <LightIcon />}
         </Button>

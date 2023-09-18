@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 /** @type {import('jest').Config} */
 module.exports = {
@@ -35,6 +35,7 @@ module.exports = {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     },
+    transformIgnorePatterns: ['!/node_modules/'],
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 

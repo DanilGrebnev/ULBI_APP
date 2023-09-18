@@ -1,5 +1,7 @@
 import { type FC, useState } from 'react'
 import cn from 'shared/lib/classnames'
+import { Button, ThemeButton } from 'shared/ui/Button'
+import { ButtonSize } from 'shared/ui/Button/types'
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher'
 import { LanguageSwitcher } from 'widgets/LanguageSwitcher'
 
@@ -23,14 +25,15 @@ export const SideBar: FC<SideBarProps> = (props) => {
             data-testid="sidebar"
             className={cn(s.SideBar, className, { [s.collapsed]: collapsed })}
         >
-            <button
-                data-testid="sidebar-toggle"
+            <Button
                 onClick={toggleCollapsed}
-                type="button"
+                theme={ThemeButton.SQUARE}
+                size={ButtonSize.M}
+                className={s.collapseButton}
             >
-                Toggle
-            </button>
-            <div className={s.switcher}>
+                {collapsed ? '>' : '<'}
+            </Button>
+            <div className={cn(s.switcherWrapper, { [s.collapsed]: collapsed })}>
                 <ThemeSwitcher />
                 <LanguageSwitcher />
             </div>

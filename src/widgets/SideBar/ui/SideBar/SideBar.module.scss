@@ -1,20 +1,33 @@
 .SideBar {
     position: relative;
+    display: flex;
     width: var(--sidebar-width);
     height: calc(100vh - var(--navbar-height));
+    justify-content: center;
     background: var(--inverted-bg-color);
-    transition: width 0.3s;
+    transition: width 0.3s ease-in-out;
 }
 
 .collapsed {
     width: var(--sidebar-width-collapsed);
 }
 
-.switcher {
+.collapseButton {
+    right: -50px;
+    bottom: 20%;
+}
+
+.switcherWrapper {
     position: absolute;
     bottom: 20px;
     display: flex;
     width: 100%;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
     gap: 20px;
+}
+
+.switcherWrapper.collapsed {
+    flex-direction: column;
 }
