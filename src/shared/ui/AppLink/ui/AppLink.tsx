@@ -29,7 +29,7 @@ export const AppLink: FC<AppLinkProps> = (props) => {
         <NavLink
             to={to}
             className={({ isActive }) =>
-                cn(...classNames, { [s.active]: isActive })
+                cn(...classNames, { sideBarLinkActive: isActive })
             }
             {...otherProps}
         >

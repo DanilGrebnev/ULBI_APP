@@ -10,6 +10,10 @@
     font: var(--font-m);
 }
 
+* {
+    font-family: var(--font-family-main);
+}
+
 .content-page {
     display: flex;
 }
@@ -28,4 +32,8 @@
     width: 30px;
     height: 30px;
     border: 1px solid black;
+}
+
+.sideBarLinkActive {
+    color: red !important;
 }
