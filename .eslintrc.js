@@ -15,7 +15,7 @@ module.exports = {
         sourceType: 'module',
     },
 
-    plugins: ['react', 'simple-import-sort'],
+    plugins: ['react', 'simple-import-sort', 'react-hooks'],
     ignorePatterns: ['.eslintrc.js', 'jest.config.js'],
     rules: {
         /** Отключает ошибки отсутпов */
@@ -47,5 +47,9 @@ module.exports = {
 
         /** метод render устарел, используйте createRoot из react 18 */
         'react/no-deprecated': 'off',
+        
+        /**Настройка правил для react-хуков */
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'warn',
     },
 }
