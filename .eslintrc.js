@@ -26,6 +26,8 @@ module.exports = {
         '@typescript-eslint/promise-function-async': 'off',
         'no-inline-styles': 'off',
 
+        '@typescript-eslint/explicit-function-return-type': 'off',
+
         /** Предупреждение о неиспользуемых переменных */
         'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': 'warn',
@@ -47,7 +49,7 @@ module.exports = {
 
         /** метод render устарел, используйте createRoot из react 18 */
         'react/no-deprecated': 'off',
-        
+
         /**Настройка правил для react-хуков */
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
