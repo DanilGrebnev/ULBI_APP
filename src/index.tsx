@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import { App } from './app/App'
 import { ThemeProvider } from './app/providers/ThemeProvider'
+
 const container = document.getElementById('root') as HTMLElement
 
 const Application = (

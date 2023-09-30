@@ -26,6 +26,7 @@ module.exports = {
         '@typescript-eslint/promise-function-async': 'off',
         'no-inline-styles': 'off',
 
+        /**Отключает обязательную типизацию возвращаемого типа функцией */
         '@typescript-eslint/explicit-function-return-type': 'off',
 
         /** Предупреждение о неиспользуемых переменных */
@@ -40,7 +41,7 @@ module.exports = {
         '@typescript-eslint/space-before-function-paren': 'off',
 
         /*----React----**/
-        'react/jsx-props-no-spreading': 'warn',
+        'react/jsx-props-no-spreading': 'off',
 
         /** Отклчает [import React from 'react'] в каждый файл */
         'react/react-in-jsx-scope': 'off',

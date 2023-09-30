@@ -4,6 +4,7 @@ import {
     type ReactNode,
     useCallback,
     useEffect,
+    useState,
 } from 'react'
 import cn from 'shared/lib/classnames'
 import { Portal } from 'shared/ui/Portal/Portal'
@@ -14,15 +15,21 @@ interface ModalProps {
     childre?: ReactNode
     isOpen?: boolean
     onClose?: () => void
+    lazy?: boolean
 }
 
 export const Modal: FC<ModalProps> = (props) => {
-    const { children, isOpen = false, onClose } = props
+    const { children, isOpen = false, onClose, lazy } = props
+    const [isMounted, setIsMounted] = useState(false)
 
-    /**
-     * Предотвращает закрытие модального окна при клике
-     * на область контента
-     */
+    useEffect(() => {
+        if (isOpen) {
+            setIsMounted(true)
+        }
+    }, [isOpen])
+
+    // Предотвращает закрытие модального окна при клике
+    // на область контента
     const contentClick = (e: MouseEvent): void => {
         e.stopPropagation()
     }
@@ -33,8 +40,9 @@ export const Modal: FC<ModalProps> = (props) => {
         }
     }, [onClose])
 
+    // Закрытие модального окна на клавишу "Escape"
     const onKeyDown = useCallback(
-        (e: globalThis.KeyboardEvent): any => {
+        (e: globalThis.KeyboardEvent): void => {
             if (e.key === 'Escape') {
                 closeModal()
             }
@@ -49,6 +57,13 @@ export const Modal: FC<ModalProps> = (props) => {
             window.removeEventListener('keydown', onKeyDown)
         }
     }, [isOpen, onKeyDown])
+
+    // Если передан проп "Lazy"
+    // И модальное окно ни разу не открывалось
+    // Тогда модальное окно не будет монитроваться в DOM
+    if (lazy && !isMounted) {
+        return null
+    }
 
     return (
         <Portal>

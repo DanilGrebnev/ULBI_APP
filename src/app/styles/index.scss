@@ -1,7 +1,8 @@
 @import 'reset';
 @import 'variables/global';
-@import 'theme/dark';
-@import 'theme/normal';
+
+// @import 'theme/dark';
+// @import 'theme/normal';
 
 .app {
     min-height: 100vh;
@@ -26,12 +27,6 @@
 
 .page-wrapper > * {
     width: 100%;
-}
-
-.appps {
-    width: 30px;
-    height: 30px;
-    border: 1px solid black;
 }
 
 .sideBarLinkActive {
