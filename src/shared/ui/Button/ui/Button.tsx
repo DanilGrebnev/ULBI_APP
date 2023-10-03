@@ -1,15 +1,17 @@
-import { type FC } from 'react'
+import { memo } from 'react'
 import cn from 'shared/lib/classnames'
 
 import { type ButtonProps, ButtonSize, ThemeButton } from '../types'
 import s from './Button.module.scss'
 
-export const Button: FC<ButtonProps> = (props) => {
+export const Button = memo((props: ButtonProps) => {
     const {
         className,
         children,
         size = ButtonSize.L,
         theme = ThemeButton.CLEAR,
+        isLoading = false,
+        disabled = false,
         ...otherProps
     } = props
 
@@ -17,10 +19,19 @@ export const Button: FC<ButtonProps> = (props) => {
         <button
             type="button"
             title="button"
-            className={cn(s.button, s[theme], s[size], className)}
+            className={cn(
+                s.button,
+                s[theme],
+                s[size],
+                { [s.disabled]: disabled },
+                className,
+            )}
+            disabled={disabled}
             {...otherProps}
         >
-            {children}
+            {isLoading ? 'загрузка...' : children}
         </button>
     )
-}
+})
+
+Button.displayName = 'Button'

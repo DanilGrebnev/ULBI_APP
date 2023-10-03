@@ -9,21 +9,19 @@ export const Input: FC<IInputProps> = (props) => {
 
     const inputRef = useRef<HTMLInputElement>(null)
 
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        if (onChange) {
-            onChange(e?.target?.value)
-        }
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
+        if (!onChange) return
+        onChange(e?.target?.value)
     }
 
     // Фокусировка на инпуте при монтировании
-    const onFocus = () => {
+    const onFocus = (): void => {
         inputRef.current?.focus()
     }
 
     useEffect(() => {
-        if (focus) {
-            onFocus()
-        }
+        if (!focus) return
+        onFocus()
     }, [focus])
 
     return (

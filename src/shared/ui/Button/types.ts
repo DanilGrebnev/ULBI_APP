@@ -4,11 +4,13 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
     theme?: ThemeButton
     size?: ButtonSize
+    isLoading?: boolean
 }
 
 export enum ThemeButton {
     CLEAR = 'clear',
     SQUARE = 'square',
+    BORDER = 'border',
 }
 
 export enum ButtonSize {
