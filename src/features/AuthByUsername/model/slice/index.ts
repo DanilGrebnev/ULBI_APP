@@ -20,6 +20,12 @@ export const LoginSlice = createSlice({
         setPassword(state, action: PayloadAction<string>): void {
             state.password = action.payload
         },
+        /**
+         * Метод для сброса ошибки
+         */
+        resetError(state) {
+            state.error = ''
+        },
     },
 
     extraReducers: (builder) => {

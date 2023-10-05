@@ -1,4 +1,5 @@
 :root {
+    --overlay-color: rgba(0 0 0 / 60%);
     --bg-color: #e8e8ea;
     --inverted-bg-color: #070753;
     --primary-color: #041c65;

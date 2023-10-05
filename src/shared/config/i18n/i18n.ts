@@ -9,7 +9,8 @@ void i18n
     .use(initReactI18next)
     .init({
         fallbackLng: 'ru',
-        debug: true,
+        // eslint-disable-next-line no-undef
+        debug: _IS_DEV_,
 
         interpolation: {
             // eslint-disable-next-line no-undef

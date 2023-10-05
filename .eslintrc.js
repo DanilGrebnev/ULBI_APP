@@ -25,6 +25,7 @@ module.exports = {
         'simple-import-sort/imports': 'error',
         '@typescript-eslint/promise-function-async': 'off',
         'no-inline-styles': 'off',
+        'multiline-ternary': 'off',
 
         /**Отключает обязательную типизацию возвращаемого типа функцией */
         '@typescript-eslint/explicit-function-return-type': 'off',
@@ -42,6 +43,7 @@ module.exports = {
 
         /*----React----**/
         'react/jsx-props-no-spreading': 'off',
+        // 'react-hooks/exhaustive-deps': 'off',
 
         /** Отклчает [import React from 'react'] в каждый файл */
         'react/react-in-jsx-scope': 'off',

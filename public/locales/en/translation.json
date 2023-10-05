@@ -3,5 +3,8 @@
     "Обновить страницу": "Refresh page",
     "Главная": "Main",
     "О сайте": "About",
-    "Войти": "Login"
+    "Войти": "Login",
+    "Выйти": "Logout",
+    "Форма авторизации": "Authorization form",
+    "Неправильный логин или пароль": "Incorrect login or password"
 }

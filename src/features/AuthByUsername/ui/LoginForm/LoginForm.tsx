@@ -1,10 +1,11 @@
 import { loginByUserName } from 'features/AuthByUsername/model/services/loginByUserName'
-import { memo, useCallback } from 'react'
+import { memo, useCallback, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch'
 import { useAppSelector } from 'shared/hooks/useAppSelector'
 import { Button, ThemeButton } from 'shared/ui/Button'
 import { Input } from 'shared/ui/Input/Input'
+import { Text, TextTheme } from 'shared/ui/Text'
 
 import {
     getLoginErrorState,
@@ -46,8 +47,27 @@ export const LoginForm = memo(() => {
         [username, password, dispatch],
     )
 
+    const resetError = () => {
+        setTimeout(() => {
+            dispatch(loginActions.resetError())
+        }, 3000)
+    }
+
+    useEffect(() => {
+        if (!error) return
+        resetError()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [error])
+
     return (
         <div className={s.LoginForm}>
+            <Text title={t('Форма авторизации')} />
+            {error && (
+                <Text
+                    text={error}
+                    theme={TextTheme.ERROR}
+                />
+            )}
             <Input
                 focus
                 type="text"
@@ -62,10 +82,10 @@ export const LoginForm = memo(() => {
                 onChange={onChangePassword}
             />
             <Button
+                type="submit"
                 isLoading={isLoading}
                 disabled={isLoading}
                 theme={ThemeButton.BORDER}
-                type="submit"
                 className={s.button}
                 onClick={onLoginClick}
             >

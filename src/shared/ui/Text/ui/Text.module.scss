@@ -1,0 +1,27 @@
+.Text {
+    max-width: 100%;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.title {
+    color: var(--inverted-primary-color);
+    font: var(--font-l);
+}
+
+.text {
+    color: var(--inverted-secondary-color);
+    font: var(--font-m);
+}
+
+.error {
+    .title {
+        color: var(--red-light);
+    }
+
+    .text {
+        color: var(--red-dark);
+    }
+}

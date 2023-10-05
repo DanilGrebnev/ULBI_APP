@@ -1,20 +1,18 @@
 import { LoginModal } from 'features/AuthByUsername'
 import { type CSSProperties, type FC, useCallback, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import cn from 'shared/lib/classnames'
-import { Button, ThemeButton } from 'shared/ui/Button'
 
+import { DynamicButton } from './DynamicButton/DynamicButton'
 import s from './Navbar.module.scss'
 
-interface NavBarProps {
+interface INavBarProps {
     className?: string
     style?: CSSProperties
 }
 
-export const NavBar: FC<NavBarProps> = (props) => {
+export const NavBar: FC<INavBarProps> = (props) => {
     const { className, style } = props
 
-    const { t } = useTranslation()
     const [isOpen, setIsOpen] = useState(false)
 
     const onOpenModal = useCallback(() => {
@@ -30,12 +28,7 @@ export const NavBar: FC<NavBarProps> = (props) => {
             style={style}
             className={cn(s.Navbar, className)}
         >
-            <Button
-                onClick={onOpenModal}
-                theme={ThemeButton.CLEAR}
-            >
-                {t('Войти')}
-            </Button>
+            <DynamicButton onOpenModal={onOpenModal} />
             <LoginModal
                 lazy
                 isOpen={isOpen}
