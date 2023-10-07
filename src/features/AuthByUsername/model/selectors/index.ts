@@ -3,12 +3,13 @@ import { type IStateSchema } from 'app/providers/StoreProvider/config/IStateSche
 export const getLoginState = (state: IStateSchema) => state.loginForm
 
 export const getLoginUserNameState = (state: IStateSchema) =>
-    state.loginForm.username
+    state.loginForm?.username ?? ''
 
 export const getLoginPasswordState = (state: IStateSchema) =>
-    state.loginForm.password
+    state.loginForm?.password ?? ''
 
 export const getLoginIsLoadingState = (state: IStateSchema) =>
-    state.loginForm.isLoading
+    state.loginForm?.isLoading ?? false
 
-export const getLoginErrorState = (state: IStateSchema) => state.loginForm.error
+export const getLoginErrorState = (state: IStateSchema) =>
+    state.loginForm?.error

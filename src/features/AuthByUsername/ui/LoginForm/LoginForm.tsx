@@ -3,6 +3,10 @@ import { memo, useCallback, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch'
 import { useAppSelector } from 'shared/hooks/useAppSelector'
+import {
+    DynamicModuleLoader,
+    type TReducersList,
+} from 'shared/lib/components/DynamicModuleLoader'
 import { Button, ThemeButton } from 'shared/ui/Button'
 import { Input } from 'shared/ui/Input/Input'
 import { Text, TextTheme } from 'shared/ui/Text'
@@ -13,10 +17,14 @@ import {
     getLoginPasswordState,
     getLoginUserNameState,
 } from '../../model/selectors'
-import { loginActions } from '../../model/slice/index'
+import { loginActions, loginReducer } from '../../model/slice/index'
 import s from './LoginForm.module.scss'
 
-export const LoginForm = memo(() => {
+const initialReducers: TReducersList = {
+    loginForm: loginReducer,
+}
+
+const LoginForm = memo(() => {
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
 
@@ -60,39 +68,47 @@ export const LoginForm = memo(() => {
     }, [error])
 
     return (
-        <div className={s.LoginForm}>
-            <Text title={t('Форма авторизации')} />
-            {error && (
-                <Text
-                    text={error}
-                    theme={TextTheme.ERROR}
+        <DynamicModuleLoader
+            removeAfterUnmount
+            reducerName="loginForm"
+            reducers={initialReducers}
+        >
+            <div className={s.LoginForm}>
+                <Text title={t('Форма авторизации')} />
+                {error && (
+                    <Text
+                        text={error}
+                        theme={TextTheme.ERROR}
+                    />
+                )}
+                <Input
+                    focus
+                    type="text"
+                    name="username"
+                    value={username}
+                    onChange={onChangeUsername}
                 />
-            )}
-            <Input
-                focus
-                type="text"
-                name="username"
-                value={username}
-                onChange={onChangeUsername}
-            />
-            <Input
-                type="text"
-                name="password"
-                value={password}
-                onChange={onChangePassword}
-            />
-            <Button
-                type="submit"
-                isLoading={isLoading}
-                disabled={isLoading}
-                theme={ThemeButton.BORDER}
-                className={s.button}
-                onClick={onLoginClick}
-            >
-                {t('Войти')}
-            </Button>
-        </div>
+                <Input
+                    type="text"
+                    name="password"
+                    value={password}
+                    onChange={onChangePassword}
+                />
+                <Button
+                    type="submit"
+                    isLoading={isLoading}
+                    disabled={isLoading}
+                    theme={ThemeButton.BORDER}
+                    className={s.button}
+                    onClick={onLoginClick}
+                >
+                    {t('Войти')}
+                </Button>
+            </div>
+        </DynamicModuleLoader>
     )
 })
 
 LoginForm.displayName = 'LoginForm'
+
+export default LoginForm

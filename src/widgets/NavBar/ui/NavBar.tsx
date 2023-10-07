@@ -29,11 +29,13 @@ export const NavBar: FC<INavBarProps> = (props) => {
             className={cn(s.Navbar, className)}
         >
             <DynamicButton onOpenModal={onOpenModal} />
-            <LoginModal
-                lazy
-                isOpen={isOpen}
-                onClose={onCloseModal}
-            />
+            {isOpen && (
+                <LoginModal
+                    lazy
+                    isOpen={isOpen}
+                    onClose={onCloseModal}
+                />
+            )}
         </div>
     )
 }

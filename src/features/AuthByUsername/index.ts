@@ -1,2 +1,2 @@
-export { loginActions, loginReducer } from './model/slice'
+export { loginActions } from './model/slice'
 export { LoginModal } from './ui/LoginModal/LoginModal'

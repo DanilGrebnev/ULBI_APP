@@ -26,9 +26,11 @@ module.exports = {
         '@typescript-eslint/promise-function-async': 'off',
         'no-inline-styles': 'off',
         'multiline-ternary': 'off',
-
+        '@typescript-eslint/no-dynamic-delete': 'off',
         /**Отключает обязательную типизацию возвращаемого типа функцией */
         '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/prefer-ts-expect-error': 'off',
 
         /** Предупреждение о неиспользуемых переменных */
         'no-unused-vars': 'off',
