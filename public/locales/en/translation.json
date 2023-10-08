@@ -6,5 +6,6 @@
     "Войти": "Login",
     "Выйти": "Logout",
     "Форма авторизации": "Authorization form",
-    "Неправильный логин или пароль": "Incorrect login or password"
+    "Неправильный логин или пароль": "Incorrect login or password",
+    "Профиль": "Profile"
 }

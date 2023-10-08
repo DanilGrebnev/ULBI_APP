@@ -1,49 +1,26 @@
-import { type FC } from 'react'
-import { useTranslation } from 'react-i18next'
-import AboutIcon from 'shared/assets/icons/about.svg'
-import MainIcon from 'shared/assets/icons/main.svg'
-import { RoutePath } from 'shared/config/routeConfig/routeConfig'
+import { memo } from 'react'
 import { useToggleCollapsed } from 'shared/hooks/useToggleCollapsed'
 import cn from 'shared/lib/classnames'
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink'
 import { Button, ThemeButton } from 'shared/ui/Button'
 import { ButtonSize } from 'shared/ui/Button/types'
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher'
 import { LanguageSwitcher } from 'widgets/LanguageSwitcher'
 
 import s from './SideBar.module.scss'
+import { SideBarItemList } from './SideBarItemList/SideBarItemList'
 
-interface SideBarProps {
-    className?: string
-}
-
-export const SideBar: FC<SideBarProps> = (props) => {
-    const { className } = props
-    const { t } = useTranslation()
+export const SideBar = memo(() => {
     const [collapsed, toggleCollapsed] = useToggleCollapsed(false)
+
+    const collapsedClass = cn({ [s.collapsed]: collapsed })
 
     return (
         <div
             data-testid="sidebar"
-            className={cn(s.SideBar, className, { [s.collapsed]: collapsed })}
+            className={cn(s.SideBar, collapsedClass)}
         >
-            <div className={s.links}>
-                <AppLink
-                    to={RoutePath.MAIN}
-                    className={s.linkItem}
-                    theme={AppLinkTheme.SECONDARY}
-                >
-                    <MainIcon className={s.icon} />
-                    <span className={s.linkItemText}>{t('Главная')}</span>
-                </AppLink>
-                <AppLink
-                    to={RoutePath.ABOUT}
-                    className={s.linkItem}
-                    theme={AppLinkTheme.SECONDARY}
-                >
-                    <AboutIcon className={s.icon} />
-                    <span className={s.linkItemText}>{t('О сайте')}</span>
-                </AppLink>
+            <div className={s.linksContainer}>
+                <SideBarItemList collapsed={collapsed} />
             </div>
             <Button
                 onClick={toggleCollapsed}
@@ -53,12 +30,12 @@ export const SideBar: FC<SideBarProps> = (props) => {
             >
                 {collapsed ? '>' : '<'}
             </Button>
-            <div
-                className={cn(s.switcherWrapper, { [s.collapsed]: collapsed })}
-            >
+            <div className={cn(s.switcherContainer, collapsedClass)}>
                 <ThemeSwitcher />
                 <LanguageSwitcher />
             </div>
         </div>
     )
-}
+})
+
+SideBar.displayName = 'SideBar'

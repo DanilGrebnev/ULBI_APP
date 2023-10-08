@@ -13,7 +13,7 @@ export default (...args: ClassNamesProps[]): string => {
                         if (isTrue) {
                             classNames.push(className.trim())
                         }
-                    }
+                    },
                 )
             }
 

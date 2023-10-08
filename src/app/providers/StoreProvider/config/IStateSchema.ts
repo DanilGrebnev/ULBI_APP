@@ -5,14 +5,16 @@ import {
     type Reducer,
     type ReducersMapObject,
 } from '@reduxjs/toolkit'
+import { type IProfileSchema } from 'entities/Profile'
 import { type IUserSchema } from 'entities/User'
-import { type ILoginSchema } from 'features/AuthByUsername/model/types'
+import { type ILoginSchema } from 'features/AuthByUsername'
 
 export interface IStateSchema {
     user: IUserSchema
 
     // Асинхронные редюсеры
     loginForm?: ILoginSchema
+    profile?: IProfileSchema
 }
 
 export interface IReduxStoreWithManager extends EnhancedStore<IStateSchema> {

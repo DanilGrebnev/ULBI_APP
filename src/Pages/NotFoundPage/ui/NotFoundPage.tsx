@@ -4,17 +4,8 @@ import cl from 'shared/lib/classnames'
 
 import s from './NotFoundPage.module.scss'
 
-interface NotFoundPageProps {
-    className?: string
-}
-
-export const NotFoundPage: FC<NotFoundPageProps> = (props) => {
-    const { className } = props
+export const NotFoundPage: FC = () => {
     const { t } = useTranslation('notFound')
 
-    return (
-        <div className={cl(s.NotFoundPage, className)}>
-            {t('Страница не найдена')}
-        </div>
-    )
+    return <div className={cl(s.NotFoundPage)}>{t('Страница не найдена')}</div>
 }

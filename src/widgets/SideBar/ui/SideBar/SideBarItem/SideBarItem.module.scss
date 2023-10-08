@@ -1,0 +1,21 @@
+.linkItem {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    fill: var(--inverted-primary-color);
+}
+
+.collapsed .links {
+    align-items: center;
+    margin-left: 0;
+}
+
+.collapsed .linkItemText {
+    display: none;
+    transition: 0.3s;
+}

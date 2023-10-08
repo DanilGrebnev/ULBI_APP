@@ -31,6 +31,7 @@ module.exports = {
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',
         '@typescript-eslint/prefer-ts-expect-error': 'off',
+        '@typescript-eslint/no-misused-promises': 'off',
 
         /** Предупреждение о неиспользуемых переменных */
         'no-unused-vars': 'off',

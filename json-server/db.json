@@ -14,7 +14,14 @@
         }
     ],
     "profile": {
-        "name": "typicode"
+        "first": "Danil",
+        "lastName": "Grebnev",
+        "age": "24",
+        "currency": "RUB",
+        "city": "Volgograd",
+        "username": "Admin",
+        "country": "Russia",
+        "avatar": "https://sun9-33.userapi.com/impg/erQozT0cNS5XQTDlxbMPP1--MKAln36YlJasXQ/-1XgQoD4NpU.jpg?size=1620x2160&quality=95&sign=66302fef28c8f1b53ac15ea61b8ee4b4&type=album"
     },
     "users": [
         {

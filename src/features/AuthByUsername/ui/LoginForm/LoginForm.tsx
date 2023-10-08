@@ -24,7 +24,12 @@ const initialReducers: TReducersList = {
     loginForm: loginReducer,
 }
 
-const LoginForm = memo(() => {
+interface ILoginFormProps {
+    onSuccess?: () => void
+}
+
+const LoginForm = memo((props: ILoginFormProps) => {
+    const { onSuccess } = props
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
 
@@ -48,11 +53,19 @@ const LoginForm = memo(() => {
     )
 
     const onLoginClick = useCallback(
-        (e) => {
+        async (e) => {
             e.preventDefault()
-            dispatch(loginByUserName({ username, password }))
+            const result = await dispatch(
+                loginByUserName({ username, password }),
+            )
+
+            // Закрываем модальное окно при успешной авторизации
+            if (result.meta.requestStatus === 'fulfilled') {
+                if (!onSuccess) return
+                onSuccess()
+            }
         },
-        [username, password, dispatch],
+        [onSuccess, username, password, dispatch],
     )
 
     const resetError = () => {
