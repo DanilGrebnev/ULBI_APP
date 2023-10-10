@@ -10,7 +10,7 @@ const initialState: ILoginSchema = {
     error: '',
 }
 
-export const LoginSlice = createSlice({
+export const loginSlice = createSlice({
     name: 'login',
     initialState,
     reducers: {
@@ -39,9 +39,9 @@ export const LoginSlice = createSlice({
             })
             .addCase(loginByUserName.rejected, (state, action) => {
                 state.isLoading = false
-                state.error = action.payload
+                state.error = action.payload as string
             })
     },
 })
 
-export const { actions: loginActions, reducer: loginReducer } = LoginSlice
+export const { actions: loginActions, reducer: loginReducer } = loginSlice

@@ -17,7 +17,7 @@ import {
     getLoginPasswordState,
     getLoginUserNameState,
 } from '../../model/selectors'
-import { loginActions, loginReducer } from '../../model/slice/index'
+import { loginActions, loginReducer } from '../../model/slice/loginSlice'
 import s from './LoginForm.module.scss'
 
 const initialReducers: TReducersList = {

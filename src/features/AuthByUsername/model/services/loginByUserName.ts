@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { type GetThunkAPI } from '@reduxjs/toolkit/dist/createAsyncThunk'
 import { type IThunkApiConfig } from 'app/providers/StoreProvider/config/IStateSchema'
 import { type IUser } from 'entities/User'
 import { userActions } from 'entities/User'
@@ -11,10 +12,12 @@ interface ILoginData {
     password: string
 }
 
-export const loginByUserName = createAsyncThunk<IUser, ILoginData, IThunkApiConfig>(
+export const loginByUserName = createAsyncThunk<IUser, ILoginData>(
     'login/fetchByUserName',
     async (authData, thunkApi) => {
-        const { extra, dispatch, rejectWithValue } = thunkApi
+        const { extra, dispatch, rejectWithValue } = thunkApi as GetThunkAPI<
+            IThunkApiConfig<string>
+        >
 
         try {
             const response = await extra.api.post<IUser>('/login', authData)

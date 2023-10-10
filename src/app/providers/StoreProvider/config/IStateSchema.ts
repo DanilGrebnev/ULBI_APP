@@ -11,8 +11,6 @@ import { type IUserSchema } from 'entities/User'
 import { type ILoginSchema } from 'features/AuthByUsername'
 import { type NavigateOptions, type To } from 'react-router-dom'
 
-import { type AppDispatch } from './storeConfig'
-
 export interface IStateSchema {
     user: IUserSchema
 
@@ -39,8 +37,9 @@ export interface IThunkExtraConfig {
 }
 
 /** Конфиг для ThunkApi */
-export interface IThunkApiConfig {
+export interface IThunkApiConfig<T> {
     extra: IThunkExtraConfig
+    rejectValue: T
 }
 
 export type TStateSchemaKey = keyof IStateSchema
