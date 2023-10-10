@@ -55,9 +55,7 @@ const LoginForm = memo((props: ILoginFormProps) => {
     const onLoginClick = useCallback(
         async (e) => {
             e.preventDefault()
-            const result = await dispatch(
-                loginByUserName({ username, password }),
-            )
+            const result = await dispatch(loginByUserName({ password, username }))
 
             // Закрываем модальное окно при успешной авторизации
             if (result.meta.requestStatus === 'fulfilled') {

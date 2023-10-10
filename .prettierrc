@@ -1,6 +1,7 @@
 {
     "tabWidth": 4,
     "semi": false,
+    "printWidth": 90,
     "arrowParens": "always",
     "singleAttributePerLine": true,
     "singleQuote": true

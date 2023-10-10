@@ -1,40 +1,38 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { type IThunkApiConfig } from 'app/providers/StoreProvider/config/IStateSchema'
 import { type IUser } from 'entities/User'
 import { userActions } from 'entities/User'
 import i18n from 'shared/config/i18n/i18n'
+import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import { USER_LOCAL_STORAGE_KEY } from 'shared/const/localstorage'
 
-interface ILoginByUserNameProps {
+interface ILoginData {
     username: string
     password: string
 }
 
-export const loginByUserName = createAsyncThunk<
-    IUser,
-    ILoginByUserNameProps,
-    { rejectValue: string }
->('login/fetchByUserName', async (authData, thunkApi) => {
-    try {
-        const response = await axios.post<IUser>(
-            'http://localhost:8000/login',
-            authData,
-        )
+export const loginByUserName = createAsyncThunk<IUser, ILoginData, IThunkApiConfig>(
+    'login/fetchByUserName',
+    async (authData, thunkApi) => {
+        const { extra, dispatch, rejectWithValue } = thunkApi
 
-        if (!response.data) {
-            throw new Error()
+        try {
+            const response = await extra.api.post<IUser>('/login', authData)
+
+            if (!response.data) {
+                throw new Error()
+            }
+
+            localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify(response.data))
+
+            dispatch(userActions.setAuthData(response.data))
+
+            extra.navigate(RoutePath.PROFILE)
+
+            return response.data
+        } catch (err) {
+            console.log(err)
+            return rejectWithValue(i18n.t('Неправильный логин или пароль'))
         }
-
-        localStorage.setItem(
-            USER_LOCAL_STORAGE_KEY,
-            JSON.stringify(response.data),
-        )
-
-        thunkApi.dispatch(userActions.setAuthData(response.data))
-
-        return response.data
-    } catch (err) {
-        console.log(err)
-        return thunkApi.rejectWithValue(i18n.t('Неправильный логин или пароль'))
-    }
-})
+    },
+)

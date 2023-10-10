@@ -32,7 +32,7 @@ module.exports = {
         '@typescript-eslint/ban-ts-comment': 'off',
         '@typescript-eslint/prefer-ts-expect-error': 'off',
         '@typescript-eslint/no-misused-promises': 'off',
-
+        '@typescript-eslint/no-invalid-void-type': 'off',
         /** Предупреждение о неиспользуемых переменных */
         'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': 'warn',

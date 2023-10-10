@@ -12,15 +12,15 @@ import { ThemeProvider } from './app/providers/ThemeProvider'
 const container = document.getElementById('root') as HTMLElement
 
 const Application = (
-    <StoreProvider>
-        <BrowserRouter>
+    <BrowserRouter>
+        <StoreProvider>
             <ErrorBoundary>
                 <ThemeProvider>
                     <App />
                 </ThemeProvider>
             </ErrorBoundary>
-        </BrowserRouter>
-    </StoreProvider>
+        </StoreProvider>
+    </BrowserRouter>
 )
 
 createRoot(container).render(Application)

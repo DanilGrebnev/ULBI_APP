@@ -1,5 +1,7 @@
+import { fetchProfileData } from 'entities/Profile'
 import { profileReducer } from 'entities/Profile/model/slice/profileSlice'
-import { type FC } from 'react'
+import { type FC, useEffect } from 'react'
+import { useAppDispatch } from 'shared/hooks/useAppDispatch'
 import {
     DynamicModuleLoader,
     type TReducersList,
@@ -12,6 +14,12 @@ const initialReducers: TReducersList = {
 }
 
 const ProfilePage: FC = (props) => {
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(fetchProfileData())
+    }, [dispatch])
+
     return (
         <DynamicModuleLoader
             removeAfterUnmount
