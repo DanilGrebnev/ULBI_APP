@@ -22,11 +22,10 @@ const ProfilePage: FC = (props) => {
 
     return (
         <DynamicModuleLoader
-            removeAfterUnmount
             reducerName="profile"
             reducers={initialReducers}
         >
-            <div>PROFILE</div>
+            PROFILE
         </DynamicModuleLoader>
     )
 }

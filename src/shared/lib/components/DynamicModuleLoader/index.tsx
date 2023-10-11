@@ -23,16 +23,11 @@ export const DynamicModuleLoader: FC<IDynamicModuleLoaderProps> = (props) => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        Object.entries(reducers).forEach(
-            ([reducerName, reducer]: [string, Reducer]) => {
-                store.reducerManager.add(
-                    reducerName as TStateSchemaKey,
-                    reducer,
-                )
+        Object.entries(reducers).forEach(([reducerName, reducer]: [string, Reducer]) => {
+            store.reducerManager.add(reducerName as TStateSchemaKey, reducer)
 
-                dispatch({ type: `@INIT: ${reducerName}reducer` })
-            },
-        )
+            dispatch({ type: `@INIT: ${reducerName}reducer` })
+        })
 
         return () => {
             if (removeAfterUnmount) {
@@ -42,8 +37,7 @@ export const DynamicModuleLoader: FC<IDynamicModuleLoaderProps> = (props) => {
                 })
             }
         }
-        // eslint-disable-next-line
-    }, [])
+    }, [dispatch, reducers, removeAfterUnmount, store.reducerManager])
 
     return <>{children}</>
 }
