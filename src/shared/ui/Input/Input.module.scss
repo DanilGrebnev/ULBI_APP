@@ -4,4 +4,12 @@
     input {
         width: 100%;
     }
+
+    &.hidden {
+        input:not(:focus) {
+            outline: none;
+            background: transparent;
+            border: none;
+        }
+    }
 }

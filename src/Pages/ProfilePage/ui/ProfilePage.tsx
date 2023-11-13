@@ -1,4 +1,4 @@
-import { fetchProfileData } from 'entities/Profile'
+import { fetchProfileData, ProfileCard } from 'entities/Profile'
 import { profileReducer } from 'entities/Profile/model/slice/profileSlice'
 import { type FC, useEffect } from 'react'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch'
@@ -25,7 +25,7 @@ const ProfilePage: FC = (props) => {
             reducerName="profile"
             reducers={initialReducers}
         >
-            PROFILE
+            <ProfileCard />
         </DynamicModuleLoader>
     )
 }

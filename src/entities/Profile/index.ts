@@ -1,4 +1,3 @@
-import { ProfileCard } from './ui/ProfileCard'
 export {
     getIsErrorProfile,
     getProfileData,
@@ -9,3 +8,4 @@ export { fetchProfileData } from './model/services/fetchProfileData/fetchProfile
 export { profileActions } from './model/slice/profileSlice'
 export { type IProfileSchema } from './model/types/profile'
 export { type IProfile } from './model/types/profile'
+export { ProfileCard } from './ui/ProfileCard'
