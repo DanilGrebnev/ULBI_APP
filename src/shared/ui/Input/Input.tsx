@@ -8,6 +8,8 @@ export const Input: FC<IInputProps> = (props) => {
     const { className, onChange, theme, value, initialValue, focus, ...otherProps } =
         props
 
+    const [input, setInput] = useState(value)
+
     const inputRef = useRef<HTMLInputElement>(null)
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +17,9 @@ export const Input: FC<IInputProps> = (props) => {
             return
         }
 
-        onChange(e?.target?.value)
+        const inputValue = e?.target?.value
+        onChange(inputValue)
+        setInput(inputValue)
     }
 
     // Фокусировка на инпуте при монтировании
@@ -31,7 +35,7 @@ export const Input: FC<IInputProps> = (props) => {
     return (
         <div className={cn(s.Input, s[theme ?? ''], className)}>
             <input
-                value={value}
+                value={input}
                 ref={inputRef}
                 onChange={onChangeHandler}
                 {...otherProps}

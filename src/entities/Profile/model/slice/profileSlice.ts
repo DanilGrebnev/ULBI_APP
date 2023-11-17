@@ -5,7 +5,7 @@ import { type IProfile, type IProfileSchema } from '../types/profile'
 
 const initialState: IProfileSchema = {
     data: undefined,
-    error: undefined,
+    error: '',
     isLoading: false,
     readonly: true,
 }

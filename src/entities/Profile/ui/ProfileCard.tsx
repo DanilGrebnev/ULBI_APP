@@ -1,4 +1,4 @@
-import { type FC, useState, useLayoutEffect, useEffect } from 'react'
+import { type FC, useEffect, useLayoutEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useAppSelector } from 'shared/hooks/useAppSelector'
 import { Button, ThemeButton } from 'shared/ui/Button'
@@ -29,30 +29,31 @@ export const ProfileCard: FC<IProfileCardProps> = () => {
 
     const onChange = (input: string) => {
         setValue(input)
-        console.log(first)
     }
 
-    useEffect(() => {
-        setValue(profileData.first)
-        setLastName(profileData.lastName)
-    }, [profileData])
+    // useEffect(() => {
+    //     setValue(profileData.first)
+    //     setLastName(profileData.lastName)
+    // }, [profileData])
 
     return (
         <div className={s.ProfileCard}>
             <Text title={t('Профиль')} />
             {isLoading ? (
                 <Loader />
+            ) : isError ? (
+                <h1>{isError}</h1>
             ) : (
                 <>
                     <Input
                         theme="hidden"
-                        value={first}
+                        value={profileData.first}
                         onChange={onChange}
                     />
 
                     <Input
                         theme="hidden"
-                        value={lastName}
+                        value={profileData.lastName}
                     />
                     <Button theme={ThemeButton.BORDER}>Редактировать профиль</Button>
                 </>

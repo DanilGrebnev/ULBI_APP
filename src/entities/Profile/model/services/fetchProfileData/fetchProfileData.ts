@@ -5,10 +5,6 @@ import { type AxiosError } from 'axios'
 
 import { type IProfile } from '../../types/profile'
 
-interface IRejectResponse {
-    message: string
-}
-
 export const fetchProfileData = createAsyncThunk<IProfile>(
     'profile/fetchData',
     async (_, thunkApi) => {
@@ -25,8 +21,8 @@ export const fetchProfileData = createAsyncThunk<IProfile>(
 
             return response.data
         } catch (err) {
-            const error = err as AxiosError<IRejectResponse>
-            return rejectWithValue(error.response?.data.message)
+            const error = err as AxiosError
+            return rejectWithValue(error.message)
         }
     },
 )
