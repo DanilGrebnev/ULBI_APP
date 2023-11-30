@@ -16,6 +16,10 @@
     font: var(--font-m);
 }
 
+.contentWidth {
+    width: fit-content;
+}
+
 .error {
     .title {
         color: var(--red-light);

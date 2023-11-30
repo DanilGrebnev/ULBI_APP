@@ -1,62 +1,49 @@
-import { type FC, useEffect, useLayoutEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { useAppSelector } from 'shared/hooks/useAppSelector'
-import { Button, ThemeButton } from 'shared/ui/Button'
+import { type FC, useState } from 'react'
+import { ErrorMessage } from 'shared/ui/ErrorMessage'
 import { Input } from 'shared/ui/Input/Input'
 import { Loader } from 'shared/ui/Loader'
-import { Text } from 'shared/ui/Text'
 
-import {
-    getIsErrorProfile,
-    getProfileData,
-    getProfileIsLoading,
-} from '../model/selectors/profileSelectors'
+import { type getProfileData } from '../model/selectors/profileSelectors'
 import s from './ProfileCard.module.scss'
 
 interface IProfileCardProps {
     className?: string
+    data?: ReturnType<typeof getProfileData>
+    isLoading?: boolean
+    isError?: string
 }
 
-export const ProfileCard: FC<IProfileCardProps> = () => {
-    const profileData = useAppSelector(getProfileData)
+export const ProfileCard: FC<IProfileCardProps> = (props) => {
+    const { data, isLoading, isError } = props
 
     const [first, setValue] = useState<string>('')
     const [lastName, setLastName] = useState<string>('')
-
-    const { t } = useTranslation()
-    const isLoading = useAppSelector(getProfileIsLoading)
-    const isError = useAppSelector(getIsErrorProfile)
 
     const onChange = (input: string) => {
         setValue(input)
     }
 
-    // useEffect(() => {
-    //     setValue(profileData.first)
-    //     setLastName(profileData.lastName)
-    // }, [profileData])
-
     return (
-        <div className={s.ProfileCard}>
-            <Text title={t('Профиль')} />
+        <div id="Profile">
             {isLoading ? (
-                <Loader />
+                <Loader color="blue" />
             ) : isError ? (
-                <h1>{isError}</h1>
+                <ErrorMessage error={isError} />
             ) : (
-                <>
-                    <Input
-                        theme="hidden"
-                        value={profileData.first}
-                        onChange={onChange}
-                    />
+                <div className={s['profile-card-content']}>
+                    <div>
+                        <Input
+                            theme="hidden"
+                            value={data?.first}
+                            onChange={onChange}
+                        />
 
-                    <Input
-                        theme="hidden"
-                        value={profileData.lastName}
-                    />
-                    <Button theme={ThemeButton.BORDER}>Редактировать профиль</Button>
-                </>
+                        <Input
+                            theme="hidden"
+                            value={data?.lastName}
+                        />
+                    </div>
+                </div>
             )}
         </div>
     )

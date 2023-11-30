@@ -14,6 +14,7 @@ interface TextProps {
     text?: ReactNode
     theme?: TextTheme
     fullWidth?: boolean
+    contentWidth?: boolean
 }
 
 export const Text: FC<TextProps> = (props) => {
@@ -23,6 +24,7 @@ export const Text: FC<TextProps> = (props) => {
         className,
         fullWidth = true,
         theme = TextTheme.PRIMARY,
+        contentWidth = false,
     } = props
 
     return (
@@ -30,7 +32,7 @@ export const Text: FC<TextProps> = (props) => {
             className={cn(
                 s.Text,
                 s[theme],
-                { [s.fullWidth]: fullWidth },
+                { [s.fullWidth]: fullWidth, [s.contentWidth]: contentWidth },
                 className,
             )}
         >

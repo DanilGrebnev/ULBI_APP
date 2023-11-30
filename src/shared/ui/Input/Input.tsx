@@ -1,12 +1,19 @@
-import { type ChangeEvent, type FC, useEffect, useRef, useState } from 'react'
+import { type ChangeEvent, type FC, memo, useEffect, useRef, useState } from 'react'
 import cn from 'shared/lib/classnames'
 
 import s from './Input.module.scss'
 import { type IInputProps } from './InputType'
 
-export const Input: FC<IInputProps> = (props) => {
-    const { className, onChange, theme, value, initialValue, focus, ...otherProps } =
-        props
+export const Input: FC<IInputProps> = memo((props) => {
+    const {
+        className,
+        onChange,
+        theme = '',
+        value,
+        initialValue,
+        focus,
+        ...otherProps
+    } = props
 
     const [input, setInput] = useState(value)
 
@@ -33,7 +40,7 @@ export const Input: FC<IInputProps> = (props) => {
     }, [focus])
 
     return (
-        <div className={cn(s.Input, s[theme ?? ''], className)}>
+        <div className={cn(s.Input, s[theme], className)}>
             <input
                 value={input}
                 ref={inputRef}
@@ -42,4 +49,6 @@ export const Input: FC<IInputProps> = (props) => {
             />
         </div>
     )
-}
+})
+
+Input.displayName = 'Input'

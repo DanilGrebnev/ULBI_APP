@@ -8,6 +8,7 @@ module.exports = {
         'plugin:react/recommended',
         'standard-with-typescript',
         'eslint:recommended',
+        'plugin:storybook/recommended',
     ],
     overrides: [],
     parserOptions: {
@@ -18,6 +19,8 @@ module.exports = {
     plugins: ['react', 'simple-import-sort', 'react-hooks'],
     ignorePatterns: ['.eslintrc.js', 'jest.config.js'],
     rules: {
+        'react/prop-types': 'off',
+
         /** Отключает ошибки отсутпов */
         '@typescript-eslint/indent': 'off',
         '@typescript-eslint/no-floating-promises': 'off',
